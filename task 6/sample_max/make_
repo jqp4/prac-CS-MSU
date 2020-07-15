@@ -1,4 +1,0 @@
-nasm -f elf32 -o max.o max.asm
-gcc -m32 -o max max.o
-./max
-
