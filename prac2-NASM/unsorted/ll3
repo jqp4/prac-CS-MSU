@@ -1,0 +1,39 @@
+%include "io.inc"
+
+section .text
+global CMAIN
+global f
+
+
+f:
+    ; if (!q) return 42;
+    ; return (f(q->next) % 2) ? q->s : q->c;
+    
+    push ebp
+    mov  ebp, esp
+    push ecx
+    sub  esp, 4
+    mov  eax, 42
+    mov  ecx, [ebp + 8]   ; ecx = q
+    jecxz exit
+    ;add  ecx, 16         
+    mov  edx, [ecx + 16]  ; edx = q->next = *(q + 4)
+    
+    
+    
+    
+    
+    
+    
+    exit:
+    add  esp, 4
+    pop  ecx
+    pop  ebp
+    ret
+
+
+
+CMAIN:
+    ;write your code here
+    xor eax, eax
+    ret
