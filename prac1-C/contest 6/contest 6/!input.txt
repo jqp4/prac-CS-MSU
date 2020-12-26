@@ -1,0 +1,21 @@
+6
+algcourse.cs.msu.su 2667188916
+google.com 1249728355
+A 3
+B 4
+C 5
+yandex.ru 1476066059
+13
+algcourse.cs.msu.su
+nohost.nodomain
+D
+H
+A
+G
+B
+F
+C
+G
+localhost.localdomain
+yandex.ru
+algcourse.cs.msu.su
