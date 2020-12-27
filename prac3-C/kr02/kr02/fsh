@@ -1,0 +1,3 @@
+#!/bin/sh
+gcc fc1.c -o ppp -std=gnu11
+./ppp
