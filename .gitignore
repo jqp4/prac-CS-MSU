@@ -1,3 +1,8 @@
+prac-materials
+lib/tmp
+*_tmp*
+*_old*
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,linux,assembler,xcode,vscode,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,assembler,xcode,vscode,python
