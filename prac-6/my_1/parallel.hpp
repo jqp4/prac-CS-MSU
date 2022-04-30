@@ -1,19 +1,22 @@
-#include <iostream>
-#include "generate.hpp"
+#pragma once
+
 #include "printer.hpp"
 
-int main() {
-  int n = 2;  // cin >> n;
-  double* x = new double[n];
-  double* b = new double[n];
-  double** a = new double*[n];
-  for (int i = 0; i <= n; i++) {
-    a[i] = new double[n];
+void ggg(double** a, double* x, int n, int iter) {
+  // #pragma omp parallel for
+  for (int i = iter; i < n; i++) {
+    double k = 0;
+    for (int j = iter; j < n; j++) {
+      k += x[j - iter] * a[j][i];
+    }
+    k *= 2;
+    for (int j = iter; j < n; j++) {
+      a[j][i] -= k * x[j - iter];
+    }
   }
+}
 
-  generate(a, b, n);
-  output(a, b, n);
-
+void gause(double** a, double* b, double* x, int n) {
   // прямой ход
   for (int k = 0; k < n; k++) {
     for (int j = k + 1; j < n; j++) {
@@ -36,7 +39,4 @@ int main() {
     }
     x[k] = (b[k] - d) / a[k][k];
   }
-
-  outputAnswer(x, n);
-  return 0;
 }

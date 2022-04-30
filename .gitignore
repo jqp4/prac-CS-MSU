@@ -2,6 +2,7 @@ prac-materials
 lib/tmp
 *_tmp*
 *_old*
+.vscode
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,linux,assembler,xcode,vscode,python
