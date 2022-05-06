@@ -149,14 +149,14 @@ void calculate_reverse_gauss_method(int n,
   double sum = 0;
   for (int i = n - 1; i >= 0; --i) {
     sum = 0;
-#pragma omp parallel num_threads(num_threads)
+    // #pragma omp parallel num_threads(num_threads)
     {
-#pragma omp for reduction(+ : sum)
+      // #pragma omp for reduction(+ : sum)
       for (int j = i + 1; j < n; ++j) {
         sum += matrix_a[i * n + j] * vector_x[j];
       }
 
-#pragma omp single
+      // #pragma omp single
       {
         double a = matrix_a[i * n + i];
         vector_x[i] = a != 0.0 ? (vector_b[i] - sum) / a : 0;
