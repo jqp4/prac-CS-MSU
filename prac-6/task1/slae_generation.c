@@ -44,12 +44,15 @@ void generate_slae(FILE* output, int number_of_elements, int is_stdin) {
 
 int main(int argc, char** argv) {
   srand(42);
-  int number_of_elements;
-  if (argc > 3) {
+  if (argc > 3)
     exit(1);
-  }
-  number_of_elements = (int)atoi(argv[1]);
-  FILE* output_a = fopen("slae", "wb");
+
+  char slae[] = "slae_";
+  char slaeFilename[10];
+  int numberOfElements = (int)atoi(argv[1]);
+  sprintf(slaeFilename, "%s%d", slae, numberOfElements);
+
+  FILE* output_a = fopen(slaeFilename, "wb");
   if (!output_a) {
     printf("Error opening file \"%s\"\n", "a");
     exit(1);
@@ -58,7 +61,7 @@ int main(int argc, char** argv) {
   if (argc == 3) {
     is_stdin = 1;
   }
-  generate_slae(output_a, number_of_elements, is_stdin);
+  generate_slae(output_a, numberOfElements, is_stdin);
   fclose(output_a);
 
   return 0;

@@ -1,0 +1,7 @@
+#BSUB -n 3
+#BSUB -W 00:15
+#BSUB -o "my_job.%J.1000.16.out"
+#BSUB -e "my_job.%J.1000.16.err"
+#BSUB -R "span[hosts=1]"
+OMP_NUM_THREADS=16
+./parallel_algorithm 1000 16 slae_1000
