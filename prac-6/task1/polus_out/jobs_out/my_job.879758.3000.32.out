@@ -1,0 +1,52 @@
+Sender: LSF System <lsfadmin@polus-c1-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 879758: <#BSUB -n 5;#BSUB -W 00:15;#BSUB -o "my_job.%J.3000.32.out";#BSUB -e "my_job.%J.3000.32.err";#BSUB -R "span[hosts=1]";OMP_NUM_THREADS=32;./parallel_algorithm 3000 32 slae_3000> in cluster <MSUCluster> Done
+
+Job <#BSUB -n 5;#BSUB -W 00:15;#BSUB -o "my_job.%J.3000.32.out";#BSUB -e "my_job.%J.3000.32.err";#BSUB -R "span[hosts=1]";OMP_NUM_THREADS=32;./parallel_algorithm 3000 32 slae_3000> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-sqi21-13> in cluster <MSUCluster> at Fri May  6 13:04:08 2022
+Job was executed on host(s) <5*polus-c1-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-sqi21-13> in cluster <MSUCluster> at Fri May  6 13:09:44 2022
+</home_edu/edu-cmc-sqi21/edu-cmc-sqi21-13> was used as the home directory.
+</home_edu/edu-cmc-sqi21/edu-cmc-sqi21-13/task1> was used as the working directory.
+Started at Fri May  6 13:09:44 2022
+Terminated at Fri May  6 13:09:52 2022
+Results reported at Fri May  6 13:09:52 2022
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#BSUB -n 5
+#BSUB -W 00:15
+#BSUB -o "my_job.%J.3000.32.out"
+#BSUB -e "my_job.%J.3000.32.err"
+#BSUB -R "span[hosts=1]"
+OMP_NUM_THREADS=32
+./parallel_algorithm 3000 32 slae_3000
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   197.94 sec.
+    Max Memory :                                 67 MB
+    Average Memory :                             45.00 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   8 sec.
+    Turnaround time :                            344 sec.
+
+The output (if any) follows:
+
+Time to get upper triangular form (T1): 5.554626
+Time to calculate reverse gauss method (T2): 0.007612
+Norm of solution difference: 8.33576e-10
+Slae residual norm: 3.96435e-08
+
+
+PS:
+
+Read file <my_job.879758.3000.32.err> for stderr output of this job.
+
