@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# rm ./lsf/OMP_job_*
+rm ./lsf/OMP_job_*
 
 for matrix_size in 300 1000 3000 6000
 do

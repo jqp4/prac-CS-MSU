@@ -7,10 +7,8 @@ void generate_slae(FILE *output, int number_of_elements, int is_stdin) {
   double *vector_x = (double *)malloc(number_of_elements * sizeof(double));
 
   for (int i = 0; i < number_of_elements; ++i) {
-    if (is_stdin)
-      scanf("%lf", &vector_x[i]);
-    else
-      vector_x[i] = (double)(rand() % 200 - 100);
+    if (is_stdin) scanf("%lf", &vector_x[i]);
+    else vector_x[i] = (double)(rand() % 200 - 100);
 
     writed_object_count = fwrite(&vector_x[i], sizeof(double), 1, output);
   }
@@ -40,8 +38,7 @@ void generate_slae(FILE *output, int number_of_elements, int is_stdin) {
 
 int main(int argc, char **argv) {
   srand(42);
-  if (argc > 3)
-    exit(1);
+  if (argc > 3) exit(1);
 
   char slae[] = "slae_";
   char slaeFilename[10];
