@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// вeктор x - случайные значения от -100 до 100
+// матрица A - генерируется случайно
+// вектор b - линейная комбинация соотв. строки матрицы А и вектора х
+
 void generate_slae(FILE *output, int number_of_elements, int is_stdin) {
   int writed_object_count = 0;
   double *vector_x = (double *)malloc(number_of_elements * sizeof(double));
