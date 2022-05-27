@@ -1,0 +1,6 @@
+#BSUB -W 00:15
+#BSUB -o "my_job.%J.1000000.c2.t4.out"
+#BSUB -e "my_job.%J.1000000.c2.t4.err"
+#BSUB -R "affinity[core(2)]"
+OMP_NUM_THREADS=4
+/polusfs/lsf/openmp/launchOpenMP.py ./main 1000000 4 

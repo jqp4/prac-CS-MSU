@@ -1,0 +1,6 @@
+#BSUB -W 00:15
+#BSUB -o "my_job.%J.10000.c16.t16.out"
+#BSUB -e "my_job.%J.10000.c16.t16.err"
+#BSUB -R "affinity[core(16)]"
+OMP_NUM_THREADS=16
+/polusfs/lsf/openmp/launchOpenMP.py ./main 10000 16 
