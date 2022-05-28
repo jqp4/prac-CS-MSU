@@ -5,8 +5,11 @@
 #include <omp.h>
 #include <tuple>
 #include <vector>
+
 #define ld long double
 #define _USE_MATH_DEFINES
+#define eps 1.0e-14
+
 using std::abs;
 using std::tie;
 using std::vector;
@@ -88,7 +91,6 @@ vector<ld> omp_mult_MV(int num_threads, int n, int m, const vector<int> &col, co
 }
 
 void omp_funcs_test(int num_threads, int n, int m, const vector<int> &col, const vector<ld> &val, const vector<ld> &b, const vector<ld> &x) {
-  const ld eps = 1.0e-7;
   vector<ld> consistent_res = line_mult_MV(n, m, col, val, x);
   vector<ld> omp_res = omp_mult_MV(num_threads, n, m, col, val, x);
   ld norm_of_solution_difference = solution_diff(n, consistent_res, omp_res);
@@ -187,7 +189,6 @@ std::tuple<vector<int>, vector<ld>, vector<ld>, vector<ld>> ellpack_matrix(int n
 }
 
 vector<ld> cg_solver(int num_threads, int n, int m, const vector<int> &col, const vector<ld> &val, const vector<ld> &b) {
-  const ld eps = 1.0e-7;
   ld timer_start;
   ld spmv_total_time = 0.0;
   ld paqb_total_time = 0.0;
