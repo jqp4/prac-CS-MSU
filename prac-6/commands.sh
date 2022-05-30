@@ -12,4 +12,7 @@ scp -r edu-cmc-sqi21-13@polus.cs.msu.ru:~/task1/ ~/Projects/prac-CS-MSU/prac-6/t
 # для этих задач надо выбирать потокобезопаснубю версию компилятора
 
 
-clear; printf "\n\n\n\n\n\n"; cat my_job.*.100000.*.out
+clear; printf "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"; cat my_job.*.100000.*.out
+
+
+module load SpectrumMPI

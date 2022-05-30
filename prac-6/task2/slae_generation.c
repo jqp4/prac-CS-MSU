@@ -2,19 +2,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// вeктор x - случайные значения от -100 до 100
+// вeктор x - случайные значения от 0 до 200
 // матрица A - генерируется случайно
 // вектор b - линейная комбинация соотв. строки матрицы А и вектора х
 
 void generate_slae(FILE *output, int number_of_elements, int is_stdin) {
-  int writed_object_count = 0;
+
   double *vector_x = (double *)malloc(number_of_elements * sizeof(double));
 
   for (int i = 0; i < number_of_elements; ++i) {
     if (is_stdin) scanf("%lf", &vector_x[i]);
     else vector_x[i] = (double)(rand() % 200);
 
-    writed_object_count = fwrite(&vector_x[i], sizeof(double), 1, output);
+    fwrite(&vector_x[i], sizeof(double), 1, output);
   }
 
   double *vector_b = (double *)malloc(number_of_elements * sizeof(double));
@@ -26,12 +26,12 @@ void generate_slae(FILE *output, int number_of_elements, int is_stdin) {
       else num = (double)(rand() % 200);
 
       vector_b[i] += num * vector_x[j];
-      writed_object_count = fwrite(&num, sizeof(double), 1, output);
+      fwrite(&num, sizeof(double), 1, output);
     }
   }
 
   for (int i = 0; i < number_of_elements; ++i) {
-    writed_object_count = fwrite(&vector_b[i], sizeof(double), 1, output);
+    fwrite(&vector_b[i], sizeof(double), 1, output);
   }
   free(vector_x);
   free(vector_b);
