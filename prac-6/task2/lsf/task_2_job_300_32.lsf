@@ -1,0 +1,5 @@
+#BSUB -n 32 -q normal
+#BSUB -W 00:59
+#BSUB -o "my_job.%J.300.32.out"
+#BSUB -e "my_job.%J.300.32.err"
+mpiexec ./main 300

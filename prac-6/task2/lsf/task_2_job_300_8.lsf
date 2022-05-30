@@ -1,5 +1,0 @@
-#BSUB -n 8 -q short
-#BSUB -W 00:15
-#BSUB -o "my_job.%J.300.8.out"
-#BSUB -e "my_job.%J.300.8.err"
-mpiexec ./main 300
