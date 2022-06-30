@@ -1,4 +1,4 @@
-c_files=~/Projects/prac-CS-MSU/prac-6/task2/*.c
+c_files=~/Projects/prac-CS-MSU/prac-6/task2_may/*.c
 
 # pragma format
 # https://stackoverflow.com/questions/31353748/how-could-i-indent-c-pragma-using-clang-format

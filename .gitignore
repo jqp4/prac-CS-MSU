@@ -2,6 +2,7 @@ prac-materials
 lib/tmp
 *_tmp*
 *_old*
+*_service*
 .vscode
 
 
