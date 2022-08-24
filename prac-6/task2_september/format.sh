@@ -1,5 +1,5 @@
 c_files=~/Projects/prac-CS-MSU/prac-6/task2_september/*.c
-cpp_files=~/Projects/prac-CS-MSU/prac-6/task2_september/*/*.cpp
+cpp_files=~/Projects/prac-CS-MSU/prac-6/task2_september/*.cpp
 
 # pragma format
 # https://stackoverflow.com/questions/31353748/how-could-i-indent-c-pragma-using-clang-format
@@ -9,7 +9,7 @@ cpp_files=~/Projects/prac-CS-MSU/prac-6/task2_september/*/*.cpp
 # sed -i '' 's/#pragma omp/\/\/#pragma omp/g' $c_files
 
 # Do format
-clang-format -i -style='{BasedOnStyle: LLVM, IndentWidth: 2, ColumnLimit: 200, AllowShortIfStatementsOnASingleLine: AllIfsAndElse}' $c_files
+# clang-format -i -style='{BasedOnStyle: LLVM, IndentWidth: 2, ColumnLimit: 200, AllowShortIfStatementsOnASingleLine: AllIfsAndElse}' $c_files
 clang-format -i -style='{BasedOnStyle: LLVM, IndentWidth: 2, ColumnLimit: 200, AllowShortIfStatementsOnASingleLine: AllIfsAndElse}' $cpp_files
 
 # Replace "// *#pragma omp" by "#pragma omp"
