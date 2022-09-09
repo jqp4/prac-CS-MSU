@@ -2,4 +2,4 @@
 #BSUB -W 00:59
 #BSUB -o "my_job.%J.1000.2.out"
 #BSUB -e "my_job.%J.1000.2.err"
-mpiexec ./main 1000 100 1
+mpiexec ./run 1000

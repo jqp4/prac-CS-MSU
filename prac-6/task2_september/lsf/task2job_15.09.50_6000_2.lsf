@@ -1,5 +1,0 @@
-#BSUB -n 2 -q normal
-#BSUB -W 00:59
-#BSUB -o "my_job.%J.6000.2.out"
-#BSUB -e "my_job.%J.6000.2.err"
-mpiexec ./main 6000 100 1
