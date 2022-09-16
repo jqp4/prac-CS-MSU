@@ -1,0 +1,5 @@
+#BSUB -n 1 -q normal
+#BSUB -W 00:59
+#BSUB -o "my_job.%J.6000.1.out"
+#BSUB -e "my_job.%J.6000.1.err"
+mpiexec ./run 6000

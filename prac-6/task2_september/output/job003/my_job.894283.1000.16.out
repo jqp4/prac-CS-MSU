@@ -1,0 +1,72 @@
+Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 894283: <#BSUB -n 16 -q normal;#BSUB -W 00:59;#BSUB -o "my_job.%J.1000.16.out";#BSUB -e "my_job.%J.1000.16.err";mpiexec ./run 1000> in cluster <MSUCluster> Done
+
+Job <#BSUB -n 16 -q normal;#BSUB -W 00:59;#BSUB -o "my_job.%J.1000.16.out";#BSUB -e "my_job.%J.1000.16.err";mpiexec ./run 1000> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-sqi21-13> in cluster <MSUCluster> at Fri Sep 16 03:10:55 2022
+Job was executed on host(s) <9*polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <normal>, as user <edu-cmc-sqi21-13> in cluster <MSUCluster> at Fri Sep 16 03:11:06 2022
+                            <7*polus-c4-ib.bmc.hpc.cs.msu.ru>
+</home_edu/edu-cmc-sqi21/edu-cmc-sqi21-13> was used as the home directory.
+</home_edu/edu-cmc-sqi21/edu-cmc-sqi21-13/task2> was used as the working directory.
+Started at Fri Sep 16 03:11:06 2022
+Terminated at Fri Sep 16 03:11:09 2022
+Results reported at Fri Sep 16 03:11:09 2022
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#BSUB -n 16 -q normal
+#BSUB -W 00:59
+#BSUB -o "my_job.%J.1000.16.out"
+#BSUB -e "my_job.%J.1000.16.err"
+mpiexec ./run 1000
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   11.00 sec.
+    Max Memory :                                 643 MB
+    Average Memory :                             424.00 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              13
+    Max Threads :                                36
+    Run time :                                   3 sec.
+    Turnaround time :                            14 sec.
+
+The output (if any) follows:
+
+
+Matrix:
+  6.922e+01  8.900e+01  6.048e+01
+  7.685e+01  1.674e+00  8.256e+01
+  2.398e+01  6.445e+01  2.571e+01
+
+Matrix after:
+  1.779e+03  1.358e+03  1.366e+03
+  4.216e-14  1.217e+03  4.680e+02
+  1.464e-14  2.335e-14  1.101e+03
+
+Calculated vector x:
+  6.572e+01  3.988e+01  2.511e+01
+
+Real vector x:
+  6.572e+01  3.988e+01  2.511e+01
+
+Vector b:
+  7.105e+07  2.659e+07  1.680e+07
+===============================
+[n = 1000; p = 16]
+Residual norm = 4.200498e-16
+Soulution error = 4.496765e-09
+t1 = 0.48 sec; t2 = 0.01 sec
+===============================
+
+
+PS:
+
+Read file <my_job.894283.1000.16.err> for stderr output of this job.
+

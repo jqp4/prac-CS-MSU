@@ -4,9 +4,9 @@ rm ./lsf/task2job_*
 
 LSF_section="003"
 
-for matrix_size in 300 1000 3000
+for matrix_size in 300 1000 3000 6000
 do
-    for num_threads in 1 2 4 8
+    for num_threads in 1 2 4 8 16 32
     do  
         LSF_filename="./lsf/task2_job"$LSF_section"_n"$matrix_size"_p"$num_threads".lsf"
         touch $LSF_filename

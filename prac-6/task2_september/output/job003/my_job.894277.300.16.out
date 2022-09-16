@@ -1,0 +1,102 @@
+Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 894277: <#BSUB -n 16 -q normal;#BSUB -W 00:59;#BSUB -o "my_job.%J.300.16.out";#BSUB -e "my_job.%J.300.16.err";mpiexec ./run 300;#BSUB -n 16 -q normal;#BSUB -W 00:59;#BSUB -o "my_job.%J.300.16.out";#BSUB -e "my_job.%J.300.16.err";mpiexec ./run 300> in cluster <MSUCluster> Done
+
+Job <#BSUB -n 16 -q normal;#BSUB -W 00:59;#BSUB -o "my_job.%J.300.16.out";#BSUB -e "my_job.%J.300.16.err";mpiexec ./run 300;#BSUB -n 16 -q normal;#BSUB -W 00:59;#BSUB -o "my_job.%J.300.16.out";#BSUB -e "my_job.%J.300.16.err";mpiexec ./run 300> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-sqi21-13> in cluster <MSUCluster> at Fri Sep 16 03:10:55 2022
+Job was executed on host(s) <13*polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <normal>, as user <edu-cmc-sqi21-13> in cluster <MSUCluster> at Fri Sep 16 03:10:58 2022
+                            <3*polus-c2-ib.bmc.hpc.cs.msu.ru>
+</home_edu/edu-cmc-sqi21/edu-cmc-sqi21-13> was used as the home directory.
+</home_edu/edu-cmc-sqi21/edu-cmc-sqi21-13/task2> was used as the working directory.
+Started at Fri Sep 16 03:10:58 2022
+Terminated at Fri Sep 16 03:11:06 2022
+Results reported at Fri Sep 16 03:11:06 2022
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#BSUB -n 16 -q normal
+#BSUB -W 00:59
+#BSUB -o "my_job.%J.300.16.out"
+#BSUB -e "my_job.%J.300.16.err"
+mpiexec ./run 300
+#BSUB -n 16 -q normal
+#BSUB -W 00:59
+#BSUB -o "my_job.%J.300.16.out"
+#BSUB -e "my_job.%J.300.16.err"
+mpiexec ./run 300
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   9.40 sec.
+    Max Memory :                                 201 MB
+    Average Memory :                             101.00 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              17
+    Max Threads :                                48
+    Run time :                                   7 sec.
+    Turnaround time :                            11 sec.
+
+The output (if any) follows:
+
+
+Matrix:
+  2.459e+01  9.521e+01  5.422e+01
+  5.989e+01  3.875e+01  8.897e+01
+  8.164e+01  4.537e+01  7.411e+01
+
+Matrix after:
+  9.655e+02  7.328e+02  7.375e+02
+ -4.015e-15  6.749e+02  3.175e+02
+ -4.232e-15 -3.390e-15  5.909e+02
+
+Calculated vector x:
+  8.590e+01  8.274e+01  2.329e+01
+
+Real vector x:
+  8.590e+01  8.274e+01  2.329e+01
+
+Vector b:
+  1.149e+07  4.556e+06  2.363e+06
+===============================
+[n = 300; p = 16]
+Residual norm = 2.025120e-16
+Soulution error = 1.074678e-10
+t1 = 0.06 sec; t2 = 0.01 sec
+===============================
+
+Matrix:
+  7.882e+00  3.099e+01  1.680e+01
+  7.570e+01  1.195e+01  3.467e+00
+  6.609e+01  9.515e+01  6.759e+01
+
+Matrix after:
+  1.034e+03  7.949e+02  7.738e+02
+  5.778e-14  6.472e+02  2.009e+02
+  5.235e-14  1.240e-14  5.983e+02
+
+Calculated vector x:
+  7.957e+00  6.556e+01  8.412e+01
+
+Real vector x:
+  7.957e+00  6.556e+01  8.412e+01
+
+Vector b:
+  1.134e+07  3.896e+06  2.868e+06
+===============================
+[n = 300; p = 16]
+Residual norm = 2.903357e-16
+Soulution error = 4.786449e-10
+t1 = 0.06 sec; t2 = 0.01 sec
+===============================
+
+
+PS:
+
+Read file <my_job.894277.300.16.err> for stderr output of this job.
+

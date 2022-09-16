@@ -3,3 +3,8 @@
 #BSUB -o "my_job.%J.300.2.out"
 #BSUB -e "my_job.%J.300.2.err"
 mpiexec ./run 300
+#BSUB -n 2 -q normal
+#BSUB -W 00:59
+#BSUB -o "my_job.%J.300.2.out"
+#BSUB -e "my_job.%J.300.2.err"
+mpiexec ./run 300

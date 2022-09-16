@@ -1,25 +1,38 @@
 CFLAGS = -std=c99 -Wall -Werror -O0 -lm
 CPPFLAGS= -Wall -Werror
 
-all: create_table compile submit clean_bin
+all: create_table compile submit
 
 compile: main.cpp 
 	mpicxx $(CPPFLAGS) -c main.cpp
 	mpicxx $(CPPFLAGS) main.o -o run
+	rm main.o
 
 submit:
-	bsub < ./lsf/task2job_15.09.50_300_1.lsf
-	bsub < ./lsf/task2job_15.09.50_300_2.lsf
-	bsub < ./lsf/task2job_15.09.50_300_4.lsf
-	bsub < ./lsf/task2job_15.09.50_300_8.lsf
-	bsub < ./lsf/task2job_15.09.50_1000_1.lsf
-	bsub < ./lsf/task2job_15.09.50_1000_2.lsf
-	bsub < ./lsf/task2job_15.09.50_1000_4.lsf
-	bsub < ./lsf/task2job_15.09.50_1000_8.lsf
-	bsub < ./lsf/task2job_15.09.50_3000_1.lsf
-	bsub < ./lsf/task2job_15.09.50_3000_2.lsf
-	bsub < ./lsf/task2job_15.09.50_3000_4.lsf
-	bsub < ./lsf/task2job_15.09.50_3000_8.lsf
+	bsub < ./lsf/task2_job003_n300_p1.lsf
+	bsub < ./lsf/task2_job003_n300_p2.lsf
+	bsub < ./lsf/task2_job003_n300_p4.lsf
+	bsub < ./lsf/task2_job003_n300_p8.lsf
+	bsub < ./lsf/task2_job003_n300_p16.lsf
+	bsub < ./lsf/task2_job003_n300_p32.lsf
+	bsub < ./lsf/task2_job003_n1000_p1.lsf
+	bsub < ./lsf/task2_job003_n1000_p2.lsf
+	bsub < ./lsf/task2_job003_n1000_p4.lsf
+	bsub < ./lsf/task2_job003_n1000_p8.lsf
+	bsub < ./lsf/task2_job003_n1000_p16.lsf
+	bsub < ./lsf/task2_job003_n1000_p32.lsf
+	bsub < ./lsf/task2_job003_n3000_p1.lsf
+	bsub < ./lsf/task2_job003_n3000_p2.lsf
+	bsub < ./lsf/task2_job003_n3000_p4.lsf
+	bsub < ./lsf/task2_job003_n3000_p8.lsf
+	bsub < ./lsf/task2_job003_n3000_p16.lsf
+	bsub < ./lsf/task2_job003_n3000_p32.lsf
+	bsub < ./lsf/task2_job003_n6000_p1.lsf
+	bsub < ./lsf/task2_job003_n6000_p2.lsf
+	bsub < ./lsf/task2_job003_n6000_p4.lsf
+	bsub < ./lsf/task2_job003_n6000_p8.lsf
+	bsub < ./lsf/task2_job003_n6000_p16.lsf
+	bsub < ./lsf/task2_job003_n6000_p32.lsf
 	bjobs -u all
 
 submit1:
@@ -28,7 +41,7 @@ submit1:
 create_table:
 	rm results.csv
 	touch results.csv
-	echo "threads_count;matrix_size;t1;t2;t_all;" >> results.csv
+	echo "threads_count;matrix_size;t1;t2;t_all;mse;residual_norm;" >> results.csv
 
 
 generate: slae_generation.c

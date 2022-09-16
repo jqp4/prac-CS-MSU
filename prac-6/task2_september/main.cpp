@@ -34,7 +34,6 @@ void init_slae(double *matrix, int n, int threads_count, int thread_num, double 
       vector_b[i] = 0;
       for (int j = 0; j < n; j++) {
         buf[j] = double_rand(0, 100);
-        // vector_b[i] += buf[j] * (j % 2);
         vector_b[i] += buf[j] * real_vector_x[j];
       }
       for (int j = 0; j < n; j++) {
@@ -42,7 +41,6 @@ void init_slae(double *matrix, int n, int threads_count, int thread_num, double 
         int index2 = j / threads_count;
         int shift = index1 < n % threads_count ? index1 : n % threads_count;
         newbuf[index1 * (n / threads_count) + index2 + shift] = buf[j];
-        // printf("%d -> %d\n",j, index1*threads_count + index2);
       }
     }
 
@@ -88,16 +86,10 @@ void print_matrix(double *matrix, int n, int m, int threads_count, int thread_nu
 
 /// Вычисление нормы невязки
 double calculate_residual_norm(double *a, double *x, double *b, int n, int threads_count, int thread_num, int *sendcounts) {
-  int cols;
   long double top = 0.0;
   long double bottom = 0.0;
   long double glob_elem_of_ax_minus_b = 0;
-
-  if (thread_num + 1 > n % threads_count) {
-    cols = n / threads_count;
-  } else {
-    cols = n / threads_count + 1;
-  }
+  int cols = sendcounts[thread_num];
 
   for (int i = 0; i < n; i++) {
     long double elem_of_ax_minus_b = 0;
@@ -117,12 +109,10 @@ double calculate_residual_norm(double *a, double *x, double *b, int n, int threa
     }
   }
 
-  top = sqrt(top);
-  bottom = sqrt(bottom);
+  top = std::sqrt(top);
+  bottom = std::sqrt(bottom);
   MPI_Bcast(&bottom, 1, MPI_LONG_DOUBLE, 0, MPI_COMM_WORLD);
   MPI_Bcast(&top, 1, MPI_LONG_DOUBLE, 0, MPI_COMM_WORLD);
-  // if(thread_num == 0)
-  //     printf("    %Lf %Lf\n", top, bottom);
   return (double)top / bottom;
 }
 
@@ -136,30 +126,26 @@ void print_vector(double *x, int n, int m) {
 double get_time() {
   struct timeval t;
   gettimeofday(&t, 0);
-  return (t.tv_sec + t.tv_usec / 1000000.0); // * 1000;
+  // возвращает в секундах
+  return (t.tv_sec + t.tv_usec / 1000000.0);
 }
 
 /// Вычисление точности решения
 double calcualte_soulution_error(double *x, double *real_x, int n) {
-  long double sum_of_diffs = 0.0;
-
+  long double error = 0.0;
   for (int i = 0; i < n; i++) {
-    // double t = x[i] - (i % 2);
     double t = x[i] - real_x[i];
-    sum_of_diffs += t * t;
+    error += t * t;
   }
 
-  return std::sqrt(sum_of_diffs);
+  return std::sqrt(error);
 }
 
 // main solver
 void solve_slae_by_reflection(double *matrix, double *b, double *x, int *sendcounts, int n, int thread_num, int threads_count, double *t1, double *t2) {
   double norm_ak = 0, norm_xk = 0;
   double *xk = new double[n];
-  // if (thread_num + 1 > n % threads_count) cols = n / threads_count;
-  // else cols = n / threads_count + 1;
-
-  // кол-во столбцов для каждого процессе
+  // кол-во столбцов для каждого процесса
   int cols = sendcounts[thread_num];
   double t1_local = get_time();
 
@@ -235,7 +221,6 @@ void solve_slae_by_reflection(double *matrix, double *b, double *x, int *sendcou
       }
       for (int j = k; j < n; j++) {
         b[j] -= 2 * xk[j] * dot_product_b;
-        // printf("%lf %Lf\n", b[j],xk[j]);
       }
     }
   }
@@ -280,7 +265,7 @@ void solve_slae_by_reflection(double *matrix, double *b, double *x, int *sendcou
 
 // argv[1] - n - matrix size
 int main(int argc, char *argv[]) {
-  int m = 3; // max output
+  int m = 3; // кол-во чисел в выводе ответа
   int n, threads_count, thread_num, cols;
   double *matrix, *vector_b, *vector_x, *real_vector_x;
   int *sendcounts;
@@ -304,15 +289,14 @@ int main(int argc, char *argv[]) {
   // отправить всем процессам размер матрицы n
   MPI_Bcast(&n, 1, MPI_INTEGER, 0, MPI_COMM_WORLD);
 
-  // if (n % threads_count == 0 || thread_num + 1 > n % threads_count) cols = n / threads_count;
-  // else cols = n / threads_count + 1;
-
-  sendcounts = new int[threads_count]; // тоже самое что и cols только в массиве
+  // рассчитаем кол-во столбцов для каждого процесса и запишем в sendcounts
+  sendcounts = new int[threads_count];
   for (int i = 0; i < threads_count; i++) {
     sendcounts[i] = (i + 1 > n % threads_count) ? n / threads_count : n / threads_count + 1;
   }
-  cols = sendcounts[thread_num];
 
+  // Кол-во столбцов для данного процесса
+  cols = sendcounts[thread_num];
   matrix = new double[cols * n];
   vector_b = new double[n];
   vector_x = new double[n];
@@ -345,7 +329,6 @@ int main(int argc, char *argv[]) {
     print_vector(vector_b, n, m);
   }
 
-  // init_slae(matrix, n, threads_count, thread_num, vector_b, real_vector_x, sendcounts, cols);
   double residual_norm = calculate_residual_norm(matrix, vector_x, vector_b, n, threads_count, thread_num, sendcounts);
 
   if (thread_num == 0) {
@@ -359,7 +342,7 @@ int main(int argc, char *argv[]) {
 
     std::ofstream table;
     table.open("results.csv", std::ios_base::app);
-    table << threads_count << ';' << n << ';' << t1 << ';' << t2 << ';' << t1 + t2 << ';' << '\n';
+    table << threads_count << ';' << n << ';' << t1 << ';' << t2 << ';' << t1 + t2 << ';' << mse << ';' << residual_norm << ';' << '\n';
     table.close();
   }
 

@@ -1,0 +1,71 @@
+Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 894203: <#BSUB -n 2 -q normal;#BSUB -W 00:59;#BSUB -o "my_job.%J.3000.2.out";#BSUB -e "my_job.%J.3000.2.err";mpiexec ./run 3000> in cluster <MSUCluster> Done
+
+Job <#BSUB -n 2 -q normal;#BSUB -W 00:59;#BSUB -o "my_job.%J.3000.2.out";#BSUB -e "my_job.%J.3000.2.err";mpiexec ./run 3000> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-sqi21-13> in cluster <MSUCluster> at Fri Sep 16 02:29:58 2022
+Job was executed on host(s) <2*polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <normal>, as user <edu-cmc-sqi21-13> in cluster <MSUCluster> at Fri Sep 16 02:30:06 2022
+</home_edu/edu-cmc-sqi21/edu-cmc-sqi21-13> was used as the home directory.
+</home_edu/edu-cmc-sqi21/edu-cmc-sqi21-13/task2> was used as the working directory.
+Started at Fri Sep 16 02:30:06 2022
+Terminated at Fri Sep 16 02:31:25 2022
+Results reported at Fri Sep 16 02:31:25 2022
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#BSUB -n 2 -q normal
+#BSUB -W 00:59
+#BSUB -o "my_job.%J.3000.2.out"
+#BSUB -e "my_job.%J.3000.2.err"
+mpiexec ./run 3000
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   156.14 sec.
+    Max Memory :                                 191 MB
+    Average Memory :                             176.38 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              6
+    Max Threads :                                15
+    Run time :                                   79 sec.
+    Turnaround time :                            87 sec.
+
+The output (if any) follows:
+
+
+Matrix:
+  6.203e+00  1.527e+01  3.402e+01
+  5.179e+01  4.324e+01  1.461e+01
+  9.827e+01  4.055e+01  8.617e+00
+
+Matrix after:
+  3.171e+03  2.422e+03  2.416e+03
+  2.064e-14  2.134e+03  8.891e+02
+  4.625e-14  5.962e-14  1.897e+03
+
+Calculated vector x:
+  1.823e+01  8.165e+01  4.333e+01
+
+Real vector x:
+  1.823e+01  8.165e+01  4.333e+01
+
+Vector b:
+  3.481e+08  1.296e+08  8.045e+07
+===============================
+[n = 3000; p = 2]
+Residual norm = 4.890073e-16
+Soulution error = 4.313775e-08
+t1 = 77.16 sec; t2 = 0.04 sec
+===============================
+
+
+PS:
+
+Read file <my_job.894203.3000.2.err> for stderr output of this job.
+
